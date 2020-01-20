@@ -14,7 +14,7 @@ public class Flower : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         sleep = true;
@@ -22,30 +22,30 @@ public class Flower : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         if (!sleep)
         {
             //follow player
-            transform.position = player.transform.position;
+            transform.position = new Vector3 (player.transform.position.x-0.5f, transform.position.y, player.transform.position.z - 0.3f);
         }
     }
 
-    public void OnTriggerEnter(Collider other)
+    protected void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")
         {
             Debug.Log("HEj");
             Debug.Log(sleep);
-            //this.sleep = false;
+            this.sleep = false;
         }
     }
 
 
-    void OnDrawGizmosSelected()
-    {
-        // Draw a yellow sphere at the transform's position
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, radius);
-    }
+    //void OnDrawGizmosSelected()
+    //{
+    //    // Draw a yellow sphere at the transform's position
+    //    Gizmos.color = Color.yellow;
+    //    Gizmos.DrawWireSphere(transform.position, radius);
+    //}
 }
