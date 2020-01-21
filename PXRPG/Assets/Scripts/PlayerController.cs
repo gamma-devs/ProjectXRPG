@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float gravityScale;
 
+    private Inventory inventory; //static?
+
     // Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        if (inventory == null) {
+            inventory = new Inventory();
+        }
     }
 
     // Update is called once per frame
@@ -24,5 +29,10 @@ public class PlayerController : MonoBehaviour
         //Gravity
         moveDirection.y = moveDirection.y + (gravityScale * Physics.gravity.y);
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public Inventory getInventory()
+    {
+        return inventory;
     }
 }

@@ -1,16 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public enum FlowerName
+{
+    Fire,
+    Ice,
+    Jump
+};
+
 /*
  * The Flower parent class which all flower types will inherit from.
  * Contains an AI for the flowers so they will follow the player when player is close enough etc.
  */
 public class Flower : MonoBehaviour
 {
-    protected GameObject player;
+    static protected GameObject player;
     protected bool sleep; //sleep = true if player still hasn't found pikmin.
     //Radius that player needs to be into to wake pikmin up.
     public float radius;
+    private float moveRadius;
 
 
     // Start is called before the first frame update
