@@ -25,4 +25,10 @@ public class Spell : MonoBehaviour
     {
         
     }
+
+    //True if you fullfill the requirements for the spell.
+    public virtual bool requirements(Dictionary<FlowerName, int> flowers)
+    {
+        return false;
+    }
 }

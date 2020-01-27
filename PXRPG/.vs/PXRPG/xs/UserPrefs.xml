@@ -1,15 +1,16 @@
 ﻿<Properties StartupConfiguration="{BB278A70-9DEB-DBA0-E4D2-ECCC2906BD9C}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/FPSTarget.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Flower.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="37" Column="42" />
-      <File FileName="Assets/Scripts/Inventory.cs" Line="62" Column="19" />
-      <File FileName="Assets/Scripts/SpellMenu.cs" Line="42" Column="34" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="41" Column="39" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="51" Column="32" />
+      <File FileName="Assets/Scripts/SpellMenu.cs" Line="43" Column="1" />
       <File FileName="Assets/Scripts/CameraController.cs" Line="19" Column="65" />
-      <File FileName="Assets/Scripts/Flower.cs" Line="20" Column="61" />
-      <File FileName="Assets/Scripts/JumpFlower.cs" Line="12" Column="5" />
-      <File FileName="Assets/Scripts/Spell.cs" Line="15" Column="55" />
-      <File FileName="Assets/Scripts/GameVariables.cs" Line="9" Column="13" />
-      <File FileName="Assets/Scripts/FPSTarget.cs" Line="8" Column="28" />
+      <File FileName="Assets/Scripts/GameVariables.cs" Line="5" Column="43" />
+      <File FileName="Assets/Scripts/FPSTarget.cs" Line="13" Column="46" />
+      <File FileName="Assets/Scripts/Flower.cs" Line="54" Column="12" />
+      <File FileName="Assets/Scripts/JumpFlower.cs" Line="16" Column="6" />
+      <File FileName="Assets/Scripts/Spell.cs" Line="32" Column="22" />
+      <File FileName="Assets/Scripts/Spells/Windslash.cs" Line="7" Column="5" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />

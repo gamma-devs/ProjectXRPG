@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour
         // Z brings up the spell menu.
         if(Input.GetKeyDown("z"))
         {
-            Time.timeScale = 0;
+            Time.timeScale = 0.05f;
             inventory.bringUpSpellMenu();
         }
         if (Input.GetKeyUp("z")) {

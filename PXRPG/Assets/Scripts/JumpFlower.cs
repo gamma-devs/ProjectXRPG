@@ -9,5 +9,9 @@ using UnityEngine;
  */
 public class JumpFlower : Flower
 {
-    
+    public void Start()
+    {
+        base.Start();
+        name = FlowerName.Jump;
+    }
 }

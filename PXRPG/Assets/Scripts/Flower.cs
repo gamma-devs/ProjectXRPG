@@ -20,6 +20,7 @@ public class Flower : MonoBehaviour
     //Radius that player needs to be into to wake pikmin up.
     public float radius;
     private float moveRadius;
+    protected FlowerName name;
 
 
     // Start is called before the first frame update
@@ -50,6 +51,10 @@ public class Flower : MonoBehaviour
         }
     }
 
+    public virtual FlowerName getName()
+    {
+        return name;
+    }
 
     //void OnDrawGizmosSelected()
     //{

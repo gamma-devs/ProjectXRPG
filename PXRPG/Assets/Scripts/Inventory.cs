@@ -13,7 +13,7 @@ public class Inventory : MonoBehaviour
     private Spell[] availableSpells;
     private SpellMenu spellMenu;
     //Create a dictionary that keeps track of how many of each type you have.
-
+    Dictionary<FlowerName, int> flowerDictionary = new Dictionary<string, int>();
     int flowerCount;
     // Start is called before the first frame update
     void Start()
@@ -29,6 +29,17 @@ public class Inventory : MonoBehaviour
 
     public void addToInventory(Flower flower)
     {
+        FlowerName name = flower.getName();
+        int outValue = 0;
+        flowerDictionary.TryGetValue(name, out outValue);
+        if (outValue == 0)
+        {
+            flowerDictionary.Add(name, 1);
+        }
+        else
+        {
+            flowerDictionary.Add(name, outValue + 1);
+        }
         flowerCount++;
     }
 
@@ -61,6 +72,7 @@ public class Inventory : MonoBehaviour
 
     public void bringUpSpellMenu()
     {
+        //Apply some blur shader on camera.
 
     }
 
