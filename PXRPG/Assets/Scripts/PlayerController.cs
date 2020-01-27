@@ -29,6 +29,18 @@ public class PlayerController : MonoBehaviour
         //Gravity
         moveDirection.y = moveDirection.y + (gravityScale * Physics.gravity.y);
         controller.Move(moveDirection * Time.deltaTime);
+
+        // Z brings up the spell menu.
+        if(Input.GetKeyDown("z"))
+        {
+            Time.timeScale = 0;
+            inventory.bringUpSpellMenu();
+        }
+        if (Input.GetKeyUp("z")) {
+            Time.timeScale = 1;
+            inventory.quitSpellMenu();
+        }
+
     }
 
     public Inventory getInventory()

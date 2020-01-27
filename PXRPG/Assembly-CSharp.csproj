@@ -64,6 +64,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
     <Compile Include="Assets\Scripts\Flower.cs" />
+    <Compile Include="Assets\Scripts\FPSTarget.cs" />
     <Compile Include="Assets\Scripts\GameVariables.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
     <Compile Include="Assets\Scripts\JumpFlower.cs" />

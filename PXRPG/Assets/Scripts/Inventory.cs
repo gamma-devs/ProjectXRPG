@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
 {
     private Flower[] flowers; //Maybe not neccesary
     private Spell[] availableSpells;
+    private SpellMenu spellMenu;
     //Create a dictionary that keeps track of how many of each type you have.
 
     int flowerCount;
@@ -56,5 +57,15 @@ public class Inventory : MonoBehaviour
     public Spell[] getAvailableSpells()
     {
         return availableSpells;
+    }
+
+    public void bringUpSpellMenu()
+    {
+
+    }
+
+    public void quitSpellMenu()
+    {
+
     }
 }

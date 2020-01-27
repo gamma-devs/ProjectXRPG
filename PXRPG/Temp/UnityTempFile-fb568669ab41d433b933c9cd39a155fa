@@ -290,5 +290,9 @@
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/Flower.cs"
+"Assets/Scripts/GameVariables.cs"
+"Assets/Scripts/Inventory.cs"
 "Assets/Scripts/JumpFlower.cs"
 "Assets/Scripts/PlayerController.cs"
+"Assets/Scripts/Spell.cs"
+"Assets/Scripts/SpellMenu.cs"
