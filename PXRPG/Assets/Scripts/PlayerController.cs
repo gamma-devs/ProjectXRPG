@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         if (inventory == null) {
+            Debug.Log("Inventory created");
             inventory = new Inventory();
         }
     }

@@ -41,13 +41,16 @@ public class Flower : MonoBehaviour
         }
     }
 
+    /*
+     *  When player gets close he will collect the flower.
+     */
     protected void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.tag == "Player" && sleep)
         {
-            Debug.Log("HEj");
-            Debug.Log(sleep);
             this.sleep = false;
+            //Add this flower to the players inventory.
+            other.GetComponent<PlayerController>().getInventory().addToInventory(this);
         }
     }
 

@@ -10,10 +10,10 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private Flower[] flowers; //Maybe not neccesary
-    private Spell[] availableSpells;
+    private List<Spell> availableSpells = new List<Spell>(); //Spells you can perform
     private SpellMenu spellMenu;
     //Create a dictionary that keeps track of how many of each type you have.
-    Dictionary<FlowerName, int> flowerDictionary = new Dictionary<string, int>();
+    Dictionary<FlowerName, int> flowerDictionary = new Dictionary<FlowerName, int>();
     int flowerCount;
     // Start is called before the first frame update
     void Start()
@@ -41,6 +41,7 @@ public class Inventory : MonoBehaviour
             flowerDictionary.Add(name, outValue + 1);
         }
         flowerCount++;
+        generateSpells();
     }
 
     public void removeFromInventory()
@@ -62,10 +63,18 @@ public class Inventory : MonoBehaviour
 
     public void generateSpells()
     {
-
+        availableSpells.Clear();
+        for(int i = 0; i < GameVariables.SPELLS.Length; i++)
+        {
+            if(GameVariables.SPELLS[i].requirements(flowerDictionary))
+            {
+                availableSpells.Add(GameVariables.SPELLS[i]);
+            }
+        }
+        //Sort the available spells list according to some criteria.
     }
 
-    public Spell[] getAvailableSpells()
+    public List<Spell> getAvailableSpells()
     {
         return availableSpells;
     }

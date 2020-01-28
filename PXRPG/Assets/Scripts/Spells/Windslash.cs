@@ -11,7 +11,7 @@ public class Windslash : Spell
     {
         int outValue = 0;
         flowers.TryGetValue(FlowerName.Jump, out outValue);
-        if (outValue >= 2)
+        if (outValue >= 1)
             return true;
         return false;
     }

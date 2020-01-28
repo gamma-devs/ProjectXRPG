@@ -6,7 +6,6 @@ using UnityEngine;
  */
 public class SpellMenu : MonoBehaviour
 {
-    private Spell[] availableSpells;
     PlayerController player;
     Camera camera;
     // Start is called before the first frame update
@@ -30,7 +29,7 @@ public class SpellMenu : MonoBehaviour
      */
     private void generateMenu()
     {
-        availableSpells = player.getInventory().getAvailableSpells();
+        List<Spell> availableSpells = player.getInventory().getAvailableSpells();
         //TODO: Sort the list according to some criteria, as default sort them according to rarity.
 
         //Show the spells on screen in a circle around the player.
