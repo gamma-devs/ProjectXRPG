@@ -14,11 +14,10 @@ public class Windslash : Spell
         name = "Wind Slash";
         description = "Perform a powerful wind slash";
 
-        Sprite mySprite = null;
-        string path = "Sprites/Spells/Atkicon";
-        //Put all spells into the SPELLS array.
-        mySprite = Resources.Load<Sprite>(path);
-        image = mySprite;
+        GameObject iconPrefab = null;
+        string path = "SpellPrefabs/WindSlashImage";
+        iconPrefab = Resources.Load<GameObject>(path);
+        icon = iconPrefab;
     }
 
     public override bool requirements(Dictionary<FlowerName, int> flowers)

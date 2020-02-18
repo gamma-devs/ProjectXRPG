@@ -10,19 +10,21 @@ public class SpellMenu : MonoBehaviour
     PlayerController player;
     Camera camera;
     Canvas menuCanvas; //The canvas you draw on.
+    public GameObject[] spellIconPrefabs;
 
     public SpellMenu()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        //menuCanvas = GameObject.FindGameObjectsWithTag("SpellMenu").GetComponent<Canvas>();
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //menuCanvas = GetComponent<Canvas>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //spellIconPrefabs = new GameObject[GameVariables.TOTAL_NR_OF_SPELLS];
         //availableSpells = generateSpells();
     }
 
@@ -53,10 +55,15 @@ public class SpellMenu : MonoBehaviour
         /*
          *  for i = 0 to TOTAL_NR_OF_SPELLS;      
          *  Draw the first spell at posAbovePlayer*cos(startDegree + degree*i)
+         * 
+         *  UPDATE: We instead draw the spells breath of the wild style.
          */
-        for (int i = 0; i < GameVariables.TOTAL_NR_OF_SPELLS;  i++)
+        for (int i = 0; i < availableSpells.Count; i++)
         {
-
+            GameObject x = availableSpells[i].getIconPrefab();
+            //menuCanvas.Children.Add()
+            GameObject icon = Instantiate(availableSpells[i].getIconPrefab(), new Vector3(0,0,0) ,Quaternion.identity);
+            icon.transform.SetParent(GameObject.FindGameObjectWithTag("SpellMenu").transform, false);
         }
     }
 }

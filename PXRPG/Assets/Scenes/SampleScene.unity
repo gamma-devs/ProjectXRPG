@@ -332,6 +332,50 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.39
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &693480332
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 693480334}
+  - component: {fileID: 693480333}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &693480333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693480332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2031e6cda16b64612a028826d952ec03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellMenu: {fileID: 2130244055}
+--- !u!4 &693480334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693480332}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.34150183, y: 0.2594639, z: -0.28562546}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &698702833
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +1009,7 @@ GameObject:
   - component: {fileID: 2130244051}
   - component: {fileID: 2130244050}
   - component: {fileID: 2130244049}
+  - component: {fileID: 2130244055}
   m_Layer: 5
   m_Name: SpellMenu
   m_TagString: SpellMenu
@@ -1087,6 +1132,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &2130244055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2130244048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e15c611e2502d4922852e0fb5a818aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spellIconPrefabs:
+  - {fileID: 7346750563358033525, guid: 7746f629cdff04711970b492b03be32d, type: 3}
 --- !u!1001 &875148208805236745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1228,6 +1287,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1362940018349428061, guid: 84555ae8991184bdaad2a2b2e33b570f,
+        type: 3}
+      propertyPath: inventory
+      value: 
+      objectReference: {fileID: 693480333}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84555ae8991184bdaad2a2b2e33b570f, type: 3}
 --- !u!1001 &4887503868434844113

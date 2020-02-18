@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
     Camera sceneCamera;
 
-    private Inventory inventory; //static?
+    public Inventory inventory; //static?
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         if (inventory == null) {
             Debug.Log("Inventory created");
-            inventory = new Inventory();
+            //inventory = new Inventory();
         }
     }
 

@@ -12,11 +12,11 @@ public class Spell : MonoBehaviour
     enum SpellType { Atk, Def, Buff, Debuff };
 
     protected string name, description;
-    public Sprite image;
     
     private SpellType type;
     public int rarity; //A number from 0 to 5.
     public int id; //Each spell will have a unique id.
+    protected GameObject icon; //The icon object which is basically the UI element/prefab.
 
     // Start is called before the first frame update
     void Start()
@@ -39,5 +39,10 @@ public class Spell : MonoBehaviour
     public string getName()
     {
         return name;
+    }
+
+    public GameObject getIconPrefab()
+    {
+        return icon;
     }
 }

@@ -11,11 +11,13 @@ public class Inventory : MonoBehaviour
 {
     private Flower[] flowers; //Maybe not neccesary
     private List<Spell> availableSpells = new List<Spell>(); //Spells you can perform
-    private SpellMenu spellMenu = new SpellMenu();
+    public SpellMenu spellMenu;// = new SpellMenu();
     //Create a dictionary that keeps track of how many of each type you have.
     Dictionary<FlowerName, int> flowerDictionary = new Dictionary<FlowerName, int>();
     int flowerCount;
     // Start is called before the first frame update
+
+
     void Start()
     {
         flowerCount = 0;
