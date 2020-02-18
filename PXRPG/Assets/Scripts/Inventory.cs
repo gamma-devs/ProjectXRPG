@@ -91,6 +91,6 @@ public class Inventory : MonoBehaviour
 
     public void quitSpellMenu()
     {
-
+        spellMenu.removeMenu();
     }
 }

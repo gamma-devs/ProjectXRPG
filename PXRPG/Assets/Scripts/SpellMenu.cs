@@ -60,10 +60,21 @@ public class SpellMenu : MonoBehaviour
          */
         for (int i = 0; i < availableSpells.Count; i++)
         {
-            GameObject x = availableSpells[i].getIconPrefab();
             //menuCanvas.Children.Add()
             GameObject icon = Instantiate(availableSpells[i].getIconPrefab(), new Vector3(0,0,0) ,Quaternion.identity);
             icon.transform.SetParent(GameObject.FindGameObjectWithTag("SpellMenu").transform, false);
+        }
+    }
+
+    /*
+     *  Remove all gameobjects in the spellMenu and make it invisible.
+     */
+    public void removeMenu()
+    {
+        GameObject spellMenu = GameObject.FindGameObjectWithTag("SpellMenu");
+        foreach (Transform child in spellMenu.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 }
