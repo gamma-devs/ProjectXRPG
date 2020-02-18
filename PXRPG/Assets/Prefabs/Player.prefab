@@ -115,3 +115,5 @@ MonoBehaviour:
   moveSpeed: 2.5
   jumpForce: 0
   gravityScale: 2
+  inventory: {fileID: 3894021152717856615, guid: f04cf3ae74a8543d6839a07910bd3801,
+    type: 3}
