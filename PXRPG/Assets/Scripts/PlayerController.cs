@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
     public float gravityScale;
 
+    Camera sceneCamera;
+
     private Inventory inventory; //static?
 
     // Start is called before the first frame update
@@ -41,6 +43,16 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 1;
             inventory.quitSpellMenu();
         }
+        transform.rotation = Camera.main.transform.rotation;
+        //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, transform.localEulerAngles.z);
+
+        //Vector3 forward = Camera.main.transform.forward;
+        //forward.y = 0;
+        //forward.Normalize();
+        //Vector3 right = Camera.main.transform.right;
+        //right.y = 0;
+        //right.Normalize();
+        //transform.position += Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed * right + Input.GetAxis("Vertical") * Time.deltaTime * moveSpeed * forward;
 
     }
 

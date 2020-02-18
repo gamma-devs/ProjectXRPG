@@ -11,7 +11,7 @@ public class Inventory : MonoBehaviour
 {
     private Flower[] flowers; //Maybe not neccesary
     private List<Spell> availableSpells = new List<Spell>(); //Spells you can perform
-    private SpellMenu spellMenu;
+    private SpellMenu spellMenu = new SpellMenu();
     //Create a dictionary that keeps track of how many of each type you have.
     Dictionary<FlowerName, int> flowerDictionary = new Dictionary<FlowerName, int>();
     int flowerCount;
@@ -64,11 +64,12 @@ public class Inventory : MonoBehaviour
     public void generateSpells()
     {
         availableSpells.Clear();
-        for(int i = 0; i < GameVariables.SPELLS.Length; i++)
+        for(int i = 0; i < GameVariables.TOTAL_NR_OF_SPELLS; i++)
         {
             if(GameVariables.SPELLS[i].requirements(flowerDictionary))
             {
                 availableSpells.Add(GameVariables.SPELLS[i]);
+                Debug.Log(GameVariables.SPELLS[i].getName() + " added to list");
             }
         }
         //Sort the available spells list according to some criteria.
@@ -82,6 +83,7 @@ public class Inventory : MonoBehaviour
     public void bringUpSpellMenu()
     {
         //Apply some blur shader on camera.
+        spellMenu.generateMenu();
 
     }
 

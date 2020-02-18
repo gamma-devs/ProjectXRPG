@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 /*
  *  The menu you bring up to then perform a spell.
  */
@@ -8,11 +9,20 @@ public class SpellMenu : MonoBehaviour
 {
     PlayerController player;
     Camera camera;
-    // Start is called before the first frame update
-    void Start()
+    Canvas menuCanvas; //The canvas you draw on.
+
+    public SpellMenu()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        //menuCanvas = GameObject.FindGameObjectsWithTag("SpellMenu").GetComponent<Canvas>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        //camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         //availableSpells = generateSpells();
     }
 
@@ -27,7 +37,7 @@ public class SpellMenu : MonoBehaviour
      *  collected or lost. This function retrieves the list of available spells from the Inventory,
      *  sorts them according to some criteria, and finally shows them on screen.
      */
-    private void generateMenu()
+    public void generateMenu()
     {
         List<Spell> availableSpells = player.getInventory().getAvailableSpells();
         //TODO: Sort the list according to some criteria, as default sort them according to rarity.
@@ -44,5 +54,9 @@ public class SpellMenu : MonoBehaviour
          *  for i = 0 to TOTAL_NR_OF_SPELLS;      
          *  Draw the first spell at posAbovePlayer*cos(startDegree + degree*i)
          */
+        for (int i = 0; i < GameVariables.TOTAL_NR_OF_SPELLS;  i++)
+        {
+
+        }
     }
 }

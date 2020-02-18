@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameVariables : MonoBehaviour
 {
@@ -8,11 +9,16 @@ public class GameVariables : MonoBehaviour
     public static int NR_LEVELS = 1;
     public static int NR_FLOWER_TYPES = 1;
     public static Spell[] SPELLS = new Spell[1];
+    static bool setup = false;
 
     //Windslash s1 = new Windslash();
     private void Start()
     {
-        //Put all spells into the SPELLS array.
-        SPELLS[0] = new Windslash(); ;
+        if (!setup)
+        {
+            SPELLS[0] = new Windslash();
+        }
+        setup = true;
     }
+
 }
