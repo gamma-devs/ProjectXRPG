@@ -15,7 +15,7 @@ public class Windslash : Spell
         description = "Perform a powerful wind slash";
 
         GameObject iconPrefab = null;
-        string path = "SpellPrefabs/WindSlashImage";
+        string path = "UIElements/SpellPrefabs/WindSlashImage";
         iconPrefab = Resources.Load<GameObject>(path);
         icon = iconPrefab;
     }

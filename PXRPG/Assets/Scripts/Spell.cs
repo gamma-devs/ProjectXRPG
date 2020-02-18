@@ -41,6 +41,11 @@ public class Spell : MonoBehaviour
         return name;
     }
 
+    public string getDescription()
+    {
+        return description;
+    }
+
     public GameObject getIconPrefab()
     {
         return icon;

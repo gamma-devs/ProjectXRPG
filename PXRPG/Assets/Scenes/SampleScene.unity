@@ -1030,7 +1030,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.38679248, g: 0.34118018, b: 0.34118018, a: 0.57254905}
+  m_Color: {r: 0.38679248, g: 0.34118018, b: 0.34118018, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1084,14 +1084,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
+  m_ScaleFactor: 20
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
+  m_DynamicPixelsPerUnit: 4
 --- !u!223 &2130244053
 Canvas:
   m_ObjectHideFlags: 0
@@ -1101,7 +1101,7 @@ Canvas:
   m_GameObject: {fileID: 2130244048}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -1144,8 +1144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e15c611e2502d4922852e0fb5a818aa7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellIconPrefabs:
-  - {fileID: 7346750563358033525, guid: 7746f629cdff04711970b492b03be32d, type: 3}
+  title: {fileID: 6155660956368189687, guid: 8fb0324557d1e4a2295c83b4748fa66c, type: 3}
+  description: {fileID: 5358610526115612101, guid: e2d57de684f484e38a4c5a1e2ddb3d41,
+    type: 3}
 --- !u!1001 &875148208805236745
 PrefabInstance:
   m_ObjectHideFlags: 0

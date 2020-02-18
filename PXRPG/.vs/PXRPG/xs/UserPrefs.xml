@@ -1,16 +1,16 @@
 ﻿<Properties StartupConfiguration="{BB278A70-9DEB-DBA0-E4D2-ECCC2906BD9C}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/SpellMenu.cs">
     <Files>
-      <File FileName="Assets/Scripts/PlayerController.cs" Line="22" Column="44" />
-      <File FileName="Assets/Scripts/SpellMenu.cs" Line="61" Column="15" />
-      <File FileName="Assets/Scripts/Inventory.cs" Line="14" Column="50" />
-      <File FileName="Assets/Scripts/GameVariables.cs" Line="11" Column="48" />
+      <File FileName="Assets/Scripts/PlayerController.cs" Line="17" Column="16" />
+      <File FileName="Assets/Scripts/SpellMenu.cs" Line="77" Column="39" />
+      <File FileName="Assets/Scripts/Inventory.cs" Line="94" Column="32" />
+      <File FileName="Assets/Scripts/GameVariables.cs" Line="12" Column="31" />
       <File FileName="Assets/Scripts/CameraController.cs" Line="19" Column="65" />
       <File FileName="Assets/Scripts/FPSTarget.cs" Line="13" Column="46" />
       <File FileName="Assets/Scripts/Flower.cs" Line="51" Column="32" />
       <File FileName="Assets/Scripts/JumpFlower.cs" Line="14" Column="22" />
-      <File FileName="Assets/Scripts/Spell.cs" Line="14" Column="1" />
-      <File FileName="Assets/Scripts/Spells/Windslash.cs" Line="21" Column="26" />
+      <File FileName="Assets/Scripts/Spell.cs" Line="14" Column="40" />
+      <File FileName="Assets/Scripts/Spells/Windslash.cs" Line="15" Column="55" />
       <File FileName="Assets/Shaders/DistortionFlow.shader" Line="115" Column="2" />
     </Files>
   </MonoDevelop.Ide.Workbench>
