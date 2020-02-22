@@ -73,7 +73,10 @@
     <Compile Include="Assets\Scripts\Spell.cs" />
     <Compile Include="Assets\Scripts\SpellMenu.cs" />
     <Compile Include="Assets\Scripts\Spells\Windslash.cs" />
+    <None Include="Assets\Shaders\SnowEffect.shader" />
+    <None Include="Assets\Shaders\Clouds.shader" />
     <None Include="Assets\Shaders\DistortionFlow.shader" />
+    <None Include="Assets\Shaders\IceEffect.shader" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>/Users/Mariostarr/Unity/ProjectXRPG/PXRPG/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
