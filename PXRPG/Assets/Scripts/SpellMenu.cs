@@ -54,16 +54,21 @@ public class SpellMenu : MonoBehaviour
         float posAbovePlayer = playerPosition.y + 0.5f;
         float startDegree = 0.0f;
 
+        float menuWidth = spellMenu.GetComponent<RectTransform>().sizeDelta.x;
+        float segmentLength = menuWidth / availableSpells.Count;
+        float firstPos = (menuWidth / (availableSpells.Count + 1));
         /*
          *  for i = 0 to TOTAL_NR_OF_SPELLS;      
          *  Draw the first spell at posAbovePlayer*cos(startDegree + degree*i)
          * 
          *  UPDATE: We instead draw the spells breath of the wild style.
          */
+        //HERE WE DRAW THE SPELLS ON SCREEN.
         for (int i = 0; i < availableSpells.Count; i++)
         {
+            //menuWidth / 2 is the "right" edge of the canvas. 0 is middle. -menuWidth/2 is "left" side
             //menuCanvas.Children.Add()
-            GameObject icon = Instantiate(availableSpells[i].getIconPrefab(), new Vector3(0,-5.0f,0) ,Quaternion.identity);
+            GameObject icon = Instantiate(availableSpells[i].getIconPrefab(), new Vector3((firstPos - menuWidth/2)+firstPos*i,-5.0f,0) ,Quaternion.identity);
             icon.transform.SetParent(spellMenu.transform, false);
         }
 
@@ -87,7 +92,7 @@ public class SpellMenu : MonoBehaviour
         spellTitle.transform.SetParent(spellMenu.transform, false);
         spellDescription.transform.SetParent(spellMenu.transform, false);
 
-        //Change canvas alpha to some value 0.5f.
+        //Change canvas alpha to some value 0.57f and a brownish color.
         spellMenu.GetComponent<Image>().color = new Vector4(0.3867925f, 0.3411802f, 0.3411802f, 0.57f);
     }
 

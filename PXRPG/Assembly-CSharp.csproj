@@ -68,10 +68,13 @@
     <Compile Include="Assets\Scripts\FPSTarget.cs" />
     <Compile Include="Assets\Scripts\GameVariables.cs" />
     <Compile Include="Assets\Scripts\Inventory.cs" />
-    <Compile Include="Assets\Scripts\JumpFlower.cs" />
+    <Compile Include="Assets\Scripts\Pikmins\CloudFlower.cs" />
+    <Compile Include="Assets\Scripts\Pikmins\FireFlower.cs" />
+    <Compile Include="Assets\Scripts\Pikmins\JumpFlower.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Spell.cs" />
     <Compile Include="Assets\Scripts\SpellMenu.cs" />
+    <Compile Include="Assets\Scripts\Spells\FireRain.cs" />
     <Compile Include="Assets\Scripts\Spells\Windslash.cs" />
     <None Include="Assets\Shaders\SnowEffect.shader" />
     <None Include="Assets\Shaders\Clouds.shader" />

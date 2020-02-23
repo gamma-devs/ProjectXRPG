@@ -6,7 +6,9 @@ public enum FlowerName
 {
     Fire,
     Ice,
-    Jump
+    Jump,
+    Cloud,
+    Wind
 };
 
 /*
