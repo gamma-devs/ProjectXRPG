@@ -49,12 +49,19 @@
         float movementSpeedX = _Time.x * _AnimSpeedX; //movement over X
         float movementSpeedY = _Time.x * _AnimSpeedY; //movement over Y
         float movementSpeedZ = _Time.x * _AnimSpeedZ; //movement over Z
-       
+        
+        /*
+            Here we perform the triplanar mapping. Triplanar mapping is always performed in xy, xz and yz sides of the mesh.
+            These values are usually always set to worldpos values. But here we add movement speed variable to it in order to animate it.
+            
+            Then we use these coordinates to fetch from the noise texture. Since the noise texture is anywhere in the world, we can never
+            go out of bounds.
+        */
         float4 xy = float4((worldPos.x * _Scale) - movementSpeedX, (worldPos.y * _Scale) - movementSpeedY, 0, 0); // xy texture projection over worldpos * scale and movement
         float4 xz = float4((worldPos.x * _Scale) - movementSpeedX, (worldPos.z * _Scale) - movementSpeedZ, 0, 0); // same with xz
         float4 yz = float4((worldPos.y * _Scale) - movementSpeedY, (worldPos.z * _Scale) - movementSpeedZ, 0, 0); // same with yz
  
-        float4 noiseXY = tex2Dlod(_Noise, xy);// textures projected
+        float4 noiseXY = tex2Dlod(_Noise, xy);
         float4 noiseXZ = tex2Dlod(_Noise, xz);
         float4 noiseYZ = tex2Dlod(_Noise, yz);
  

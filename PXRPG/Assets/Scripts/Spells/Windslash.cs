@@ -28,4 +28,5 @@ public class Windslash : Spell
             return true;
         return false;
     }
+
 }

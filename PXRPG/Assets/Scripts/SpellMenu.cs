@@ -75,7 +75,7 @@ public class SpellMenu : MonoBehaviour
         //Set the spell title and description.
         GameObject spellTitle, spellDescription;
         spellTitle = Instantiate(title, new Vector3(title.transform.position.x, title.transform.position.y, title.transform.position.z) ,Quaternion.identity);;
-        spellDescription = Instantiate(description, new Vector3(title.transform.position.x, title.transform.position.y, title.transform.position.z), Quaternion.identity); ;
+        spellDescription = Instantiate(description, new Vector3(description.transform.position.x, description.transform.position.y, description.transform.position.z), Quaternion.identity); ;
 
         if (availableSpells.Count > 0)
         {
