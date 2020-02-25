@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class Windslash : Spell
 {
 
-    public Windslash()
+    public override void init()
     {
         name = "Wind Slash";
         description = "Perform a powerful wind slash";
@@ -27,6 +27,14 @@ public class Windslash : Spell
         if (outValue >= 1)
             return true;
         return false;
+    }
+
+    /*
+     * 
+     */
+    public override void castSpell()
+    {
+
     }
 
 }

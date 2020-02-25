@@ -289,6 +289,7 @@
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Materials/Lava/Credit.cs"
+"Assets/Scripts/ButtonHandler.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/Flower.cs"
 "Assets/Scripts/FPSTarget.cs"
@@ -300,5 +301,6 @@
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/Spell.cs"
 "Assets/Scripts/SpellMenu.cs"
-"Assets/Scripts/Spells/FireRain.cs"
-"Assets/Scripts/Spells/Windslash.cs"
+"Assets/Scripts/Spells/FireRain/FireCloudController.cs"
+"Assets/Scripts/Spells/FireRain/FireRain.cs"
+"Assets/Scripts/Spells/WindSlash/Windslash.cs"

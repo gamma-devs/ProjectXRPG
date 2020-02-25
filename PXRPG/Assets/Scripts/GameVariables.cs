@@ -18,6 +18,11 @@ public class GameVariables : MonoBehaviour
         {
             SPELLS[0] = new Windslash();
             SPELLS[1] = new FireRain();
+
+            for(int i = 0; i < TOTAL_NR_OF_SPELLS; i++)
+            {
+                SPELLS[i].init();
+            }
         }
         setup = true;
     }

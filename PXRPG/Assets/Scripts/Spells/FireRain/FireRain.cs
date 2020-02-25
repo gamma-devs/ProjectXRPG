@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class FireRain : Spell
 {
-    public FireRain()
+    public GameObject cloud;
+
+    public override void init()
     {
         name = "Fire Rain";
         description = "Summon a cloud that will burn the ground below it";
@@ -27,5 +29,11 @@ public class FireRain : Spell
         if (fireOutValue >= 1 && cloudOutValue >= 1)
             return true;
         return false;
+    }
+
+    public override void castSpell()
+    {
+        //Summon the cloud prefab that has an update script inside it.
+        Instantiate(cloud);
     }
 }

@@ -289,6 +289,8 @@
 /define:CSHARP_7_OR_LATER
 /define:CSHARP_7_3_OR_NEWER
 "Assets/Materials/Lava/Credit.cs"
+"Assets/Resources/SpellEffects/FireRain/FireCloudController.cs"
+"Assets/Scripts/ButtonHandler.cs"
 "Assets/Scripts/CameraController.cs"
 "Assets/Scripts/Flower.cs"
 "Assets/Scripts/FPSTarget.cs"

@@ -14,9 +14,11 @@ public class Spell : MonoBehaviour
     protected string name, description;
     
     private SpellType type;
-    public int rarity; //A number from 0 to 5.
-    public int id; //Each spell will have a unique id.
+    protected int rarity; //A number from 0 to 5.
+    protected int id; //Each spell will have a unique id.
     protected GameObject icon; //The icon object which is basically the UI element/prefab.
+    protected GameObject player;
+    //Refernce to inventory and player needed so we can call inventory.removePikmins() and player.performSpell()?
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +31,12 @@ public class Spell : MonoBehaviour
     {
         
     }
+
+    //-------- VIRTUAL FUNCTIONS ----------------
+    public virtual void init(){}
+
+    //Gets called when you press the spell button
+    public virtual void castSpell() {}
 
     //True if you fullfill the requirements for the spell.
     public virtual bool requirements(Dictionary<FlowerName, int> flowers)
@@ -50,4 +58,6 @@ public class Spell : MonoBehaviour
     {
         return icon;
     }
+
+
 }
