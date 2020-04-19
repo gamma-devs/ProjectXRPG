@@ -38,8 +38,7 @@ public class CurveScript : MonoBehaviour
         //lr.useWorldSpace = false;
         ctrPts[0] = startPos;
         //The middle point should be between the first and last point. And put it higher up in y-pos.
-        ctrPts[1] = startPos + new Vector3(0.0f, 3.0f, 0.0f); //multiplied with a direction.
-        Debug.Log(ctrPts[1]);
+        ctrPts[1] = startPos + new Vector3(0.0f, Mathf.Abs(startPos.y-endPos.y)*1.5f, 0.0f);
         ctrPts[2] = endPos;
         drawBezier();
         //lr.SetPosition(0, startPos);
