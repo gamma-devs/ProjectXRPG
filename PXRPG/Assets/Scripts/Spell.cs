@@ -60,5 +60,17 @@ public class Spell : MonoBehaviour
         return icon;
     }
 
+    /*
+     *  After you activate some spells in the game, like fireball, your
+     *  character will be able to continously press space to throw a fireball.
+     *  In order to do this you will pass the fireball projectile to the player
+     *  as soon as the spell is initiated, and also the timer which the spell will
+     *  be active for. Then the character controller handles the rest.
+     */
+    public virtual GameObject getProjectile()
+    {
+        return null;
+    }
+
 
 }

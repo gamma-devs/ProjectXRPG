@@ -5,10 +5,10 @@ using UnityEngine.UI;
 
 public class GameVariables : MonoBehaviour
 {
-    public static int TOTAL_NR_OF_SPELLS = 3; //Change this when adding spells
+    public static int TOTAL_NR_OF_SPELLS = 4; //Change this when adding spells
     public static int NR_LEVELS = 1;
     public static int NR_FLOWER_TYPES = 3; //The different "race" types of flowers
-    public static Spell[] SPELLS = new Spell[3]; //Change this when adding spells
+    public static Spell[] SPELLS = new Spell[4]; //Change this when adding spells
     static bool setup = false;
 
     //Windslash s1 = new Windslash();
@@ -20,6 +20,7 @@ public class GameVariables : MonoBehaviour
             SPELLS[1] = new FireRain();
 
             SPELLS[2] = new CloudLift();
+            SPELLS[3] = new FireballSpell();
 
             for(int i = 0; i < TOTAL_NR_OF_SPELLS; i++)
             {

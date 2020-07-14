@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
 
     public Inventory inventory; //static?
 
+    Spell currentSpell = null;
+    GameObject spellProjectile = null;
+    float spellTimer;
+    bool spellIsActive = false; //Set this to true if a timed spell is performed.
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +49,31 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 1;
             inventory.quitSpellMenu();
         }
+
+        /*
+         *  This is when we have activated a spell that is meant to
+         *  e.g shoot projectiles. We need to activate it inside the Spell
+         *  object and then this character can cast the spell several times.
+         */
+        if (Input.GetKeyDown("space")) {
+            //Debug.Log(currentSpell);
+            if (spellTimer > 0)
+            {
+                Debug.Log("hej");
+                shootProjectile();
+            }
+        }
+
+        if(spellTimer > 0)
+        {
+            spellTimer -= Time.deltaTime;
+            //Decrease the time.
+            if(spellTimer <= 0)
+            {
+                turnOffSpell();
+            }
+        }
+
         transform.rotation = Camera.main.transform.rotation;
         //transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, Camera.main.transform.localEulerAngles.y, transform.localEulerAngles.z);
 
@@ -59,5 +90,38 @@ public class PlayerController : MonoBehaviour
     public Inventory getInventory()
     {
         return inventory;
+    }
+
+    /*
+     *  Not sure why you would want this, but let's keep it here anyways.
+     */
+    public void setCurrentSpell(Spell s)
+    {
+        currentSpell = s;
+    }
+
+    public void setCurrentProjectile(GameObject s)
+    {
+        spellProjectile = s;
+    }
+
+    public void setSpellTimer(float t)
+    {
+        spellTimer = t;
+    }
+
+    void shootProjectile()
+    {
+        if(spellProjectile != null)
+        {
+            Instantiate(spellProjectile);
+        }
+    }
+
+    void turnOffSpell()
+    {
+        currentSpell = null;
+        spellTimer = -1;
+        spellProjectile = null;
     }
 }
