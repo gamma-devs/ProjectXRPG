@@ -12,6 +12,10 @@
         _Metallic ("Metallic", Range(0,1)) = 0.0
         _WaterFogColor ("Water Fog Color", Color) = (0, 0, 0, 0)
         _WaterFogDensity ("Water Fog Density", Range(0, 2)) = 0.1
+        
+        _DistortionTexture("Distorion texture", 2D) = "white" {}
+        _RefractionValue("Refraction value", Range(0,1)) = 0.2
+        _WiggleAmount("Wiggle value", Range(0, 4)) = 1.0
     }
     SubShader
     {
@@ -28,20 +32,20 @@
         #pragma target 3.0
 
         sampler2D _MainTex, _SurfaceNoise;
-        sampler2D _CameraDepthTexture, _WaterBackgroundColor;
+        sampler2D _CameraDepthTexture, _WaterBackgroundColor, _DistortionTexture;
         float4 _CameraDepthTexture_TexelSize;
 
         struct Input
         {
-            float2 uv_MainTex;
-            float2 uv_SurfaceNoise;
-            float4 screenPos;
+            float2 uv_MainTex; // [0, 1]
+            float2 uv_SurfaceNoise : TEXCOORD1;
+            float4 screenPos; //Screen pos is the camera view coordinates (not [0, 1])
         };
 
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
-        float _WaterFogDensity, _NoiseCutoff, _FoamDepth;
+        float _WaterFogDensity, _NoiseCutoff, _FoamDepth, _RefractionValue, _WiggleAmount;
         float3 _WaterFogColor;
 
         // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
@@ -55,27 +59,48 @@
             color.a = 1;
         }
         
-        float3 colorBelowWater(float4 screenPos, float2 noiseUV, float3 normal, inout half3 albedo) {
-            float2 uvOffset = 0;//normal.xy;
-            //uvOffset.y *= _CameraDepthTexture_TexelSize.z * abs(_CameraDepthTexture_TexelSize.y);
+        //use inout to be able to modify the variable. (Like a reference in c++)
+        float3 colorBelowWater(float4 screenPos, float2 noiseUV, float2 uvMain) {
+            /*
+                Här använde vi screenPos för att fetcha från distortion texturen, detta ledde till att
+                samples var beroende av camerans position så när vi zoomade in & ut vinglade vattnet snabbt.
+                Fetcha med noiseUV istället (eller valfri uv som inte är beroende av kameran).
+            */
+            //This 2D texture has range [-1, 1] not [0, 1] hence we perform *2-1. 
+            float2 uvOffset = (tex2D(_DistortionTexture, noiseUV*_RefractionValue+_Time.y*0.03).xy*2-1)*_WiggleAmount;//normal.xy;
+            uvOffset.y *= _CameraDepthTexture_TexelSize.z * abs(_CameraDepthTexture_TexelSize.y);
             float2 uv = (screenPos.xy + uvOffset) / screenPos.w;
+            float2 ogUV = (screenPos.xy) / screenPos.w;
+            //ogUV.y *= _CameraDepthTexture_TexelSize.z * abs(_CameraDepthTexture_TexelSize.y);
+            //We use two diff variables, one for getting the foam, and the other for background color.
+            //These are different since for background color we want to use distorted uv, and for foam
+            //we want to use the original uv because we don't want the foam to be distorted.
             float backgroundDepth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, uv));
             float surfaceDepth = UNITY_Z_0_FAR_FROM_CLIPSPACE(screenPos.z);
             float diff = backgroundDepth - surfaceDepth;
             
+            float nonDistortedBackgroundDepth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, ogUV));
+            float diffForFoam = nonDistortedBackgroundDepth - surfaceDepth;
             //Foam
-            fixed4 c = _Color;
             float noiseSample = tex2D (_SurfaceNoise, noiseUV+_Time.y*0.03).r;
-            float x = saturate(diff/_FoamDepth);
+            float x = saturate(diffForFoam/_FoamDepth);
             float noiseCutoff = x*_NoiseCutoff;
-            float finalNoiseColor;
-            if(diff < _FoamDepth && noiseSample > noiseCutoff) {
-                finalNoiseColor = 1;
-                c.a = _Color.a;
-                albedo = finalNoiseColor+c;
+            if(diffForFoam < _FoamDepth && diffForFoam > 0 && noiseSample > noiseCutoff ) {
                 return 1;
             }
             
+            //Use this check to prevent refracting objects above the water surface.
+            if(diff < 0) {
+                uv = screenPos.xy / screenPos.w;
+                #if UNITY_UV_STARTS_AT_TOP
+                    if (_CameraDepthTexture_TexelSize.y < 0) {
+                uv.y = 1 - uv.y;
+                }
+                backgroundDepth = LinearEyeDepth(SAMPLE_DEPTH_TEXTURE(_CameraDepthTexture, uv));
+                diff = backgroundDepth - surfaceDepth;
+                #endif
+            }
+            //Here we want to use distorted uv to fetch from background (image projected in water)
             float3 backgroundColor = tex2D(_WaterBackgroundColor, uv).rgb;
             /*
                 The way this is built is that when the heigh difference is greater (when we are deeper in water),
@@ -83,7 +108,7 @@
                 _WaterFogColor (meaning pure blue).
                 So the overall technique is to interpolate between the original color and the
                 max depth color.
-                In the toon water tutorial they didn't use original color, they used two pre-assigned colors
+                In the toon water tutorial they didn't use original color like we do, they used two pre-assigned colors
                 that they interpolated between.
             */
             float fogFactor = exp2(-_WaterFogDensity*diff);
@@ -94,6 +119,8 @@
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = _Color;
+            
+            /*
             float noise = tex2D (_SurfaceNoise, IN.uv_SurfaceNoise+_Time.y*0.03).r;
             if(noise > _NoiseCutoff) {
                 c.a = _Color.a;
@@ -103,13 +130,16 @@
                 c.a = 0;
             }
             
+            
             o.Albedo = noise+c;
-            c = _Color.a;
+            */
+            //c = _Color;
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
             o.Alpha = c.a;
-            o.Emission = colorBelowWater(IN.screenPos, IN.uv_SurfaceNoise, o.Normal, o.Albedo)*(1-c.a);
+            o.Normal = float3(tex2D(_DistortionTexture, IN.uv_SurfaceNoise*3.+_Time.y*0.1).xy, 1.);
+            o.Emission = colorBelowWater(IN.screenPos, IN.uv_SurfaceNoise, IN.uv_MainTex)*(1-c.a);
          }
         ENDCG
     }
